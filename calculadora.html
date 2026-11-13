@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoWatt - Calculadora</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <a href="index.html" style="text-decoration: none;">
+            <h1 class="logo">EcoWatt</h1>
+        </a>
+    </header>
+
+    <main class="container page-calculadora">
+        <div class="grid-calculadora">
+            
+            <!-- Coluna Esquerda: Formulário de Entrada -->
+            <section class="painel-formulario">
+                <h2>Adicionar Equipamento</h2>
+                <form id="form-equipamento">
+                    <div class="campo">
+                        <label for="nome">Nome do equipamento:</label>
+                        <input type="text" id="nome" required placeholder="Ex: Geladeira, Chuveiro">
+                    </div>
+                    
+                    <div class="linha-dupla">
+                        <div class="campo">
+                            <label for="potencia">Potência (W):</label>
+                            <input type="number" id="potencia" min="1" required placeholder="Ex: 500">
+                        </div>
+                        <div class="campo">
+                            <label for="quantidade">Quantidade:</label>
+                            <input type="number" id="quantidade" min="1" required value="1">
+                        </div>
+                    </div>
+                    
+                    <div class="linha-dupla">
+                        <div class="campo">
+                            <label for="horas">Tempo de uso (h/dia):</label>
+                            <input type="number" id="horas" min="0" max="24" step="0.1" required placeholder="Ex: 0.5 (meia hora)">
+                        </div>
+                        <div class="campo">
+                            <label for="dias">Dias de uso no mês:</label>
+                            <input type="number" id="dias" min="0" max="31" required placeholder="0 a 31">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-comecar" style="width: 100%; margin-top: 10px;">Adicionar à Lista</button>
+                </form>
+            </section>
+
+            <!-- Coluna Direita: Resultados e Ranking -->
+            <section class="painel-resultados">
+                <h2>Resumo do Consumo</h2>
+
+                <!-- Dashboard de Configurações Globais -->
+                <div class="dashboard-meta">
+                    <div class="meta-header">
+                        <div class="config-item">
+                            <label for="num-pessoas">Moradores:</label>
+                            <input type="number" id="num-pessoas" min="1" value="2">
+                        </div>
+                        <div class="config-item">
+                            <label for="tarifa">Tarifa (R$/kWh):</label>
+                            <input type="number" id="tarifa" min="0" step="0.01" placeholder="Ex: 0.90">
+                        </div>
+                    </div>
+                    
+                    <div class="meta-status">
+                        <div class="meta-info">
+                            <!-- O valor inicial reflete 2 moradores x 150 = 300 -->
+                            <p>Consumo Ideal: <strong id="valor-meta">300</strong> kWh/mês</p>
+                            <p id="texto-casas-ideais" class="texto-casas">Você consome o equivalente a <strong>0.0</strong> casas ideais.</p>
+                        </div>
+                        <div id="badge-status" class="badge-status verde">Dentro do ideal</div>
+                    </div>
+                    
+                    <div class="fundo-barra">
+                        <div class="preenchimento-barra" id="barra-progresso"></div>
+                    </div>
+                </div>
+                
+                <div class="card-total">
+                    <h3><span id="total-kwh">0.00</span> kWh</h3>
+                    <p>Total Mensal Estimado</p>
+                    <p id="total-custo" class="texto-destaque" style="display: none;">Custo Aproximado: R$ 0,00</p>
+                </div>
+                
+                <div class="lista-header">
+                    <h3>Ranking de Aparelhos Cadastrados</h3>
+                </div>
+                
+                <div class="lista-equipamentos" id="lista-equipamentos">
+                    <p class="mensagem-vazia">Nenhum equipamento cadastrado ainda.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>Projeto de Extensão - Engenharia de Computação | PUC-Campinas</p>
+            <p>&copy; 2026 EcoWatt. Desenvolvido para promover o consumo consciente.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
